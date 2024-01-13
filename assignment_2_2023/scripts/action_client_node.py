@@ -9,15 +9,23 @@ from nav_msgs.msg import Odometry
 def set_goal_from_user_input():
     while not rospy.is_shutdown():
         try:
-            # Get target position from user input
-            x = float(input("Enter target x position "))
-            y = float(input("Enter target y position: "))
+            # Ask the user whether to enter a target or cancel
+            choice = input("Enter 't' for a new target or 'c' to cancel: ")
+
+            if choice.lower() == 't':
+                # Get target position from user input
+                x = float(input("Enter target x position: "))
+                y = float(input("Enter target y position: "))
+                # Call the set_goal function with user-input target position
+                set_goal(x, y)
+            elif choice.lower() == 'c':
+                # Call the cancel_goal function
+                cancel_goal()
+            else:
+                rospy.logwarn("Invalid choice. Enter 't' for a new target or 'c' to cancel.")
         except ValueError:
             rospy.logerr("Invalid input. Please enter numerical values.")
             continue
-
-        # Call the set_goal function with user-input target position
-        set_goal(x, y)
 
 def set_goal(x, y):
     # Create an action client

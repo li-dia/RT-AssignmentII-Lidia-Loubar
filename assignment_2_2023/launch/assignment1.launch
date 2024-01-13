@@ -8,6 +8,6 @@
     <node pkg="assignment_2_2023" type="bug_as.py" name="bug_action_service" output="screen" />
     
     <node pkg="assignment_2_2023" type="last_target_service.py" name="last_target_service" output="screen" />
-    <node pkg="assignment_2_2023" type="robot_info_service.py" name="robot_info_service" output="screen" />
+    <node pkg="assignment_2_2023" type="robot_pos_vel_service_node.py" name="robot_pos_vel_service_node" output="screen" />
 
 </launch>

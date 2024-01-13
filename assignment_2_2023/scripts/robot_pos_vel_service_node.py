@@ -32,7 +32,7 @@ def get_last_target_coordinates():
         rospy.logerr(f"Service call failed: {e}")
         return None, None
 
-def robot_info_service_callback(req):
+def robot_pos_vel_service_callback(req):
     # Service callback function to handle requests
     global robot_position, robot_speed_sum, robot_speed_count, last_target_coordinates
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     rospy.Subscriber('/custom_topic', CustomMessage, custom_callback)
 
     # Create a service server
-    service = rospy.Service('/get_robot_info', RobotInfo, robot_info_service_callback)
+    service = rospy.Service('/get_robot_pos_vel', RobotInfo, robot_pos_vel_service_callback)
 
     rospy.spin()
 
